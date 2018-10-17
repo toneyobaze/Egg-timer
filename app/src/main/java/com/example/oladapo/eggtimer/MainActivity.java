@@ -1,5 +1,6 @@
 package com.example.oladapo.eggtimer;
 
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     SeekBar timerSeekBar;
     TextView timerTextView;
+    Boolean counterIsActive = false;
 
     public void updateTimer(int secondsLeft) {
 
@@ -20,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
         String secondString = Integer.toString(seconds);
 
-        if (secondString == "0") {
+        if (seconds <= 9){
 
-            secondString = "00";
+            secondString = "0" + secondString;
 
         }
 
@@ -32,22 +34,29 @@ public class MainActivity extends AppCompatActivity {
 
      public void controlTimer(View view) {
 
-         new CountDownTimer(timerSeekBar.getProgress() * 1000, 1000){
+        if (counterIsActive == false) {
+
+            counterIsActive = true;
+            timerSeekBar.setEnabled(false);
+
+            new CountDownTimer(timerSeekBar.getProgress() * 1000 + 100, 1000) {
 
 
-             @Override
-             public void onTick(long millisUntilFinished) {
+                @Override
+                public void onTick(long millisUntilFinished) {
 
                     updateTimer((int) millisUntilFinished / 1000);
 
-             }
+                }
 
-             @Override
-             public void onFinish() {
-
-             }
-         };
-
+                @Override
+                public void onFinish() {
+                    timerTextView.setText("0:00");
+                    MediaPlayer mplayer = MediaPlayer.create(getApplicationContext(), R.raw.airhorn);
+                    mplayer.start();
+                }
+            }.start();
+        }
      }
 
     @Override
