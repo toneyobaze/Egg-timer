@@ -38,5 +38,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="182dp"
+        android:onClick="controlTimer"
         android:text="Go" />
 </RelativeLayout>
