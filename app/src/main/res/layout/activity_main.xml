@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <SeekBar
-        android:id="@+id/TimerSeekBar"
+        android:id="@+id/timerSeekBar"
         android:layout_width="365dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -22,4 +22,21 @@
         android:layout_height="490dp"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/egg" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="0:30"
+        android:textSize="70sp" />
+
+    <Button
+        android:id="@+id/controllerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="182dp"
+        android:text="Go" />
 </RelativeLayout>
